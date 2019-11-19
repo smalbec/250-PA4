@@ -18,13 +18,35 @@
 package cse250.pa4
 
 import cse250.objects.{Empty, Node, Tree}
+import sun.invoke.empty.Empty
 
 import scala.collection.mutable
 import scala.reflect.ClassTag
 
+
+
 object TreeUtilities {
   def buildHeapTreeFromHeapArray[A](heapArray: Array[A]): Tree[A] = {
-    Empty
+
+    val empty = cse250.objects.Empty
+
+    if(heapArray.isEmpty){
+      return empty
+    }
+
+    var root = new Node(heapArray(0), empty ,empty)j
+
+
+
+    for(i<- 1 to heapArray.length){
+
+    }
+
+    for(i<- heapArray.length to 0 by -1){
+
+    }
+
+    empty
   }
 
   def flattenHeapTreeToHeapArray[A: ClassTag](root: Tree[A]): Array[A] = {
