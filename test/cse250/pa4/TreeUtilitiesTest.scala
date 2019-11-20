@@ -27,11 +27,25 @@ class TreeUtilitiesTest extends FlatSpec with BeforeAndAfter {
   // Tests for buildHeapTreeFromHeapArray
   it should "work" in {
 
+    val heapArray = Array(10,5,4,3,1,2,0,-2,-4)
+    val heapTree = TreeUtilities.buildHeapTreeFromHeapArray(heapArray)
+
+    assert(true)
+
   }
   // ----
   behavior of "flattenHeapTreeToHeapArray:"
   // Tests for flattenHeapTreeToHeapArray
   it should "work" in {
+
+    val heapArray = Array(10,5,4,3,1,2,0,-2,-4)
+    val heapTree = TreeUtilities.buildHeapTreeFromHeapArray(heapArray)
+
+    val rearray = TreeUtilities.flattenHeapTreeToHeapArray(heapTree)
+
+    assert(heapArray == rearray)
+
+
 
   }
   // ----
