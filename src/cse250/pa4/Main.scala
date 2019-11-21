@@ -16,7 +16,9 @@ import cse250.objects.Tree
 
 object Main {
   def main(args: Array[String]): Unit = {
-    val heapArray = Array(10,5,4,3,1,2,0,-2,-4,5,6,7,8,9,10,11)
+  //  val heapArray = Array(10,5,4,3,1,2,0,-2,-4,5,6,7,8,9,10,11)
+      val heapArray = Array(10,5,4,3,1,2,0,-2,-4)
+
     val heapTree = TreeUtilities.buildHeapTreeFromHeapArray(heapArray)
 
     println(s"Heap as array: ${heapArray.toSeq}")
@@ -33,24 +35,24 @@ object Main {
     var updatedHeapTree = TreeUtilities.updateHeap(heapTree,1,-1)
     println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
     println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
-    // Change 10 to -1 in heap.
-    updatedHeapTree = TreeUtilities.updateHeap(heapTree,0,-1)
-    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
-    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
-    // Change 4 to -1 in heap.
-    updatedHeapTree = TreeUtilities.updateHeap(heapTree,2,-1)
-    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
-    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
-    // Change 0 to 20 in heap.
-    updatedHeapTree = TreeUtilities.updateHeap(heapTree,6,20)
-    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
-    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
-    // Change 1 to 20 in heap.
-    updatedHeapTree = TreeUtilities.updateHeap(heapTree,4,20)
-    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
-    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
-
-    println(s"Tree is a valid heap: ${TreeUtilities.isValidBinaryHeap(heapTree)}")
+//    // Change 10 to -1 in heap.
+//    updatedHeapTree = TreeUtilities.updateHeap(heapTree,0,-1)
+//    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
+//    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
+//    // Change 4 to -1 in heap.
+//    updatedHeapTree = TreeUtilities.updateHeap(heapTree,2,-1)
+//    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
+//    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
+//    // Change 0 to 20 in heap.
+//    updatedHeapTree = TreeUtilities.updateHeap(heapTree,6,20)
+//    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
+//    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
+//    // Change 1 to 20 in heap.
+//    updatedHeapTree = TreeUtilities.updateHeap(heapTree,4,20)
+//    println(s"Heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(heapTree).toSeq}")
+//    println(s"Updated heap as tree:  ${TreeUtilities.flattenHeapTreeToHeapArray(updatedHeapTree).toSeq}")
+//
+//    println(s"Tree is a valid heap: ${TreeUtilities.isValidBinaryHeap(heapTree)}")
   }
 }
 

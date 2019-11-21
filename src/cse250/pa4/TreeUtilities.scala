@@ -56,6 +56,10 @@ object TreeUtilities {
 
   def buildHeapTreeFromHeapArray[A](heapArray: Array[A]): Tree[A] = {
 
+    if(heapArray.isEmpty){
+      return empty
+    }
+
     var root = new Node(heapArray(0), heapify(heapArray, 1) , heapify(heapArray, 2))
 
     //TODO: Check if empty
@@ -64,44 +68,120 @@ object TreeUtilities {
 
   }
 
-  def unheapify[A](arr: ArrayBuffer[Option[A]], que: mutable.Queue[Tree[A]]): ArrayBuffer[Option[A]] = {
+  def unheapify[A](arr: ArrayBuffer[A], que: mutable.Queue[Tree[A]]): Array[A] = {
 
-    val currrent = que.dequeue
+    val current = que.dequeue
 
-    que.addOne(current.left)
+    if(current == cse250.objects.Empty){
+      return arr.asInstanceOf[Array[A]]
+    }
 
-    que.addOne(current.right)
+    que.addOne(current.left.head)
 
-    arr.addOne(current.value)
+    que.addOne(current.right.head)
+
+    arr.addOne(current.value.head)
 
     unheapify(arr,que)
-
-    return arr
-
   }
 
   def flattenHeapTreeToHeapArray[A: ClassTag](root: Tree[A]): Array[A] = {
 
-    var returnArr: ArrayBuffer[Option[Any]] = ArrayBuffer.empty
+    var emmm: Array[A] = Array.empty
 
-    var que: mutable.Queue[Tree[Any]] = mutable.Queue.empty
+    if(root == empty){
+      return emmm
+    }
+
+    var returnArr: ArrayBuffer[A] = ArrayBuffer.empty
+
+    var que: mutable.Queue[Tree[A]] = mutable.Queue.empty
 
     que.addOne(root)
 
-    unheapify(returnArr,que)
+    val returnarr = unheapify(returnArr,que)
 
-    Array()
+    returnArr.toArray
+
   }
 
-  def isValidBinaryHeap[A](root: Tree[A])(implicit comp: Ordering[A]): Boolean = {
-    false
-  }
+
+
+//  def isValidBinaryHeap[A](root: Tree[A])(implicit comp: Ordering[A]): Boolean = {
+//
+//    //TODO: Check if tree is proper
+//
+//    val arr = flattenHeapTreeToHeapArray(root)
+//
+//    for(i<- 0 to arr.length){
+//
+//      if((i*2)+1 > arr.length-1){
+//        return true
+//      }
+//        //if the element at the index is smaller than either children, then return false
+//      if((comp.lteq(arr(i), arr((i*2)+1))) || (comp.lteq(arr(i), arr((i*2)+2)))){
+//        return false
+//      }
+//
+//    }
+//
+//    false
+//  }
 
   def applyTree[A](root: Tree[A], index: Int): Option[A] = {
+
+    var q:mutable.Queue[Tree[A]] = mutable.Queue.empty
+
+    q.addOne(root)
+
+    var current: Tree[A] = root
+
+    var counter = 0
+
+    while(current != empty){
+      current = q.dequeue()
+      if(counter == index){
+        return current.value
+      }
+      if(current == empty){
+        return None
+      }
+      q.addOne(current.left.head)
+      q.addOne(current.right.head)
+      counter += 1
+    }
+
     None
+
   }
 
   def updateHeap[A](root: Tree[A], index: Int, elem: A)(implicit comp: Ordering[A]): Tree[A] = {
+
+    var q:mutable.Queue[Tree[A]] = mutable.Queue.empty
+
+    var arr:ArrayBuffer[Tree[A]] = ArrayBuffer.empty
+
+    q.addOne(root)
+    arr.addOne(root)
+
+    var current: Tree[A] = root
+
+    var counter = 0
+
+    while(current != empty){
+      current = q.dequeue()
+      if(counter == index){
+        current = new Node(elem, current.left.head,current.right.head)
+        return  root
+      }
+      if(current == empty){
+        return root
+      }
+      q.addOne(current.left.head)
+      q.addOne(current.right.head)
+      counter += 1
+    }
+
     root
   }
 }
